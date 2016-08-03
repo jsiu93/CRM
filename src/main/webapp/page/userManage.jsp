@@ -101,7 +101,7 @@
 		}
 		var row = selectedRows[0];
 		$('#dlg').dialog('open').dialog('setTitle', '编辑用户信息');
-		$('#fm').form('load', row);
+		$('#fm').form('myLoad', row);
 		url = '${pageContext.request.contextPath}/user/save.do?id=' + row.id;
 		
 	}
@@ -124,7 +124,7 @@
 					$('#dlg').dialog('close');
 					$('#dg').datagrid('reload');
 				} else {
-					$.messager.alset('系统提示', '保存失败');
+					$.messager.alert('系统提示', '保存失败');
 					return ;
 				}
 			}
@@ -137,7 +137,7 @@
 		$('#trueName').val('');
 		$('#email').val('');
 		$('#phone').val('');
-		$('#toleName').combobox('setValue', '');
+		$('#roleName').combobox('setValue', '');
 	}
 	
 	function closeUserDialog(){

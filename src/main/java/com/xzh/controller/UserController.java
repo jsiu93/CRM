@@ -110,6 +110,22 @@ public class UserController {
 		return null;
 	}
 	
-	
+	/**
+	 * 获取客户经理信息 下拉框用
+	 * @param response
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping("/customerManagerComboList")
+	public String customerManagerComboList(HttpServletResponse response) throws Exception{
+		Map<String, Object> map = Maps.newHashMap();
+		map.put("roleName", "客户经理");
+		List<User> userList = userService.find(map);
+		JSONArray row = JSONArray.fromObject(userList);
+		ResponseUtil.write(response, row);
+		
+		
+		return null;
+	}
 	
 }
