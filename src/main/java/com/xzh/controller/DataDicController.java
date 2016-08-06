@@ -66,13 +66,11 @@ public class DataDicController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("findDataDicName")
+	@RequestMapping("/findDataDicName")
 	public String dataDicNameComboList(HttpServletResponse response) throws Exception{
 		List<DataDic> dataDicList = dataDicService.findAll();
-		JSONArray jsonArray = new JSONArray();
-		JSONArray rows = jsonArray.fromObject(dataDicList);
-		jsonArray.addAll(rows);
-		ResponseUtil.write(response, jsonArray);
+		JSONArray rows = JSONArray.fromObject(dataDicList);
+		ResponseUtil.write(response, rows);
 		
 		return null;
 	}

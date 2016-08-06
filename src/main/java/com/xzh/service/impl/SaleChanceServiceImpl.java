@@ -37,4 +37,8 @@ public class SaleChanceServiceImpl implements SaleChanceService{
 		return saleChanceDao.delete(id);
 	}
 
+	public SaleChance findById(Integer id) {
+		return saleChanceDao.findById(id);
+	}
+
 }

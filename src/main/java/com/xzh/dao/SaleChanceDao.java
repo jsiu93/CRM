@@ -16,5 +16,7 @@ public interface SaleChanceDao {
 	int update(SaleChance saleChance);
 	
 	int delete(Integer id);
+	
+	SaleChance findById(Integer id);
 
 }

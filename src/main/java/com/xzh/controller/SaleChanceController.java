@@ -62,6 +62,7 @@ public class SaleChanceController {
 		map.put("overView", StringUtil.formatLike(s_saleChance.getOverView()));
 		map.put("createMan", StringUtil.formatLike(s_saleChance.getCreateMan()));
 		map.put("state", s_saleChance.getState());
+		map.put("devResult", s_saleChance.getDevResult());
 		map.put("start", pageBean.getStart());
 		map.put("size", pageBean.getPageSize());
 		
@@ -117,5 +118,15 @@ public class SaleChanceController {
 		return null;
 	}
 	
+	@RequestMapping("/findById")
+	public String findById(@RequestParam(value="id")String id, HttpServletResponse response) throws Exception{
+		SaleChance saleChance = saleChanceService.findById(Integer.parseInt(id));
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(java.util.Date.class, new DateJsonValueProcessor("yyyy-MM-dd HH:mm"));
+		JSONObject result = JSONObject.fromObject(saleChance, jsonConfig);
+		ResponseUtil.write(response, result);
+		
+		return null;
+	}
 	
 }
