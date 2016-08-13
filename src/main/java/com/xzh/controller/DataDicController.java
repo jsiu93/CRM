@@ -93,6 +93,25 @@ public class DataDicController {
 		ResponseUtil.write(response, result);
 		return null;
 	}
+	
+	/**
+	 * 根据数据字典名称查找，用于下拉框
+	 * @param dataDicName
+	 * @param response
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping("/findDataDic")
+	public String dataDicComboList(String dataDicName, HttpServletResponse response) throws Exception{
+		JSONArray jsonArray = new JSONArray();
+		Map<String, Object> map = Maps.newHashMap();
+		map.put("dataDicName", dataDicName);
+		List<DataDic> dataDicList = dataDicService.find(map);
+		JSONArray rows = JSONArray.fromObject(dataDicList);
+		ResponseUtil.write(response, rows);
+		return null;
+		
+	}
 
 	@RequestMapping("/delete")
 	public String delete(@RequestParam(value="ids")String ids, HttpServletResponse response) throws Exception{
