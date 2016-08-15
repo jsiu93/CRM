@@ -126,6 +126,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="gsdjh!=null and gsdjh!='' ">
 				gsdjh=#{gsdjh},
 			</if>
+			<if test="state != 0 ">
+				state = #{state}
+			</if>
 	    </set>
 	    where id=#{id}
 	</update>
@@ -136,6 +139,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="findById" parameterType="Integer" resultMap="CustomerResult">
 		select * from t_customer where id=#{id} 
+	</select>
+	
+	<select id="findLossCustomer" resultMap="CustomerResult">
+		select * from t_customer t1 where id not in (select cusId from t_customer_order 
+		where DATE_ADD(orderDate,INTERVAL 6 month) > now()) and t1.state=1
 	</select>
 	
 </mapper> 

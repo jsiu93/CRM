@@ -18,5 +18,10 @@ public interface CustomerService {
 	int delete(Integer id);
 	
 	Customer findById(Integer id);
+	
+	/**
+	 * 查找流失客户并添加到流失客户表
+	 */
+	void checkCustomerLoss();
 
 }

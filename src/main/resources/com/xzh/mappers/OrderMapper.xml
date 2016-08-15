@@ -39,4 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from t_customer_order where id=#{id}
 	</select>
 
+	<select id="findLastOrderByCusId" parameterType="Integer" resultMap="OrderResult">
+		select * from t_customer_order where cusId= #{cusId} order by orderDate desc limit 0,1
+	</select>
+
 </mapper> 

@@ -13,4 +13,11 @@ public interface OrderDao {
 
 	Order findById(Integer id);
 	
+	/**
+	 * 查找指定客户最近的订单
+	 * @param cusId
+	 * @return
+	 */
+	Order findLastOrderByCusId(int cusId);
+	
 }
