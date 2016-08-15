@@ -19,4 +19,10 @@ public interface CustomerDao {
 	
 	Customer findById(Integer id);
 	
+	/**
+	 * 查找流失客户（六个月未下单的客户）
+	 * @return
+	 */
+	List<Customer> findLossCustomer();
+	
 }
